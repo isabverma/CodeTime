@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "631194556978",
+    "firebase_url": "https://codetime-c845a.firebaseio.com",
+    "project_id": "codetime-c845a",
+    "storage_bucket": "codetime-c845a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631194556978:android:adf134017a8dd268",
+        "android_client_info": {
+          "package_name": "org.codetime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631194556978-p3mr0om70ttm6vtabi19ap01pvupmo0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4RefsOhHl3dL5L46Foln5ONAvnaUzi3w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "631194556978-p3mr0om70ttm6vtabi19ap01pvupmo0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

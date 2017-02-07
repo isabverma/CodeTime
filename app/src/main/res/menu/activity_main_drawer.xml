@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/index"
+            android:icon="@android:drawable/star_on"
+            android:title="Git - Home"
+            android:titleCondensed="index" />
+    </group>
+
+    <item android:title="Tutorials">
+        <menu>
+            <item
+                android:id="@+id/git_basic_concepts"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Basic Concepts"
+                android:titleCondensed="git_basic_concepts" />
+            <item
+                android:id="@+id/git_environment"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Environment Setup"
+                android:titleCondensed="git_environment" />
+            <item
+                android:id="@+id/git_life_cycle"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Life Cycle"
+                android:titleCondensed="git_life_cycle" />
+            <item
+                android:id="@+id/git_create_operation"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Create Operation"
+                android:titleCondensed="git_create_operation" />
+            <item
+                android:id="@+id/git_clone_operation"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Clone Operation"
+                android:titleCondensed="git_clone_operation" />
+            <item
+                android:id="@+id/git_perform_changes"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Perform Changes"
+                android:titleCondensed="git_perform_changes" />
+            <item
+                android:id="@+id/git_review_changes"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Review Changes"
+                android:titleCondensed="git_review_changes" />
+            <item
+                android:id="@+id/git_commit_changes"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Commit Changes"
+                android:titleCondensed="git_commit_changes" />
+            <item
+                android:id="@+id/git_push_operation"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Push Operation"
+                android:titleCondensed="git_push_operation" />
+            <item
+                android:id="@+id/git_update_operation"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Update Operation"
+                android:titleCondensed="git_update_operation" />
+            <item
+                android:id="@+id/git_stash_operation"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Stash Operation"
+                android:titleCondensed="git_stash_operation" />
+            <item
+                android:id="@+id/git_move_operation"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Move Operation"
+                android:titleCondensed="git_move_operation" />
+            <item
+                android:id="@+id/git_rename_operation"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Rename Operation"
+                android:titleCondensed="git_rename_operation" />
+            <item
+                android:id="@+id/git_delete_operation"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Delete Operation"
+                android:titleCondensed="git_delete_operation" />
+            <item
+                android:id="@+id/git_fix_mistakes"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Fix Mistakes"
+                android:titleCondensed="git_fix_mistakes" />
+            <item
+                android:id="@+id/git_tag_operation"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Tag Operation"
+                android:titleCondensed="git_tag_operation" />
+            <item
+                android:id="@+id/git_patch_operation"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Patch Operation"
+                android:titleCondensed="git_patch_operation" />
+            <item
+                android:id="@+id/git_managing_branches"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Managing Branches"
+                android:titleCondensed="git_managing_branches" />
+            <item
+                android:id="@+id/git_handling_conflicts"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Handling Conflicts"
+                android:titleCondensed="git_handling_conflicts" />
+            <item
+                android:id="@+id/git_different_platforms"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Different Platforms"
+                android:titleCondensed="git_different_platforms" />
+            <item
+                android:id="@+id/git_online_repositories"
+                android:icon="@android:drawable/star_on"
+                android:title="Git - Online Repositories"
+                android:titleCondensed="git_online_repositories" />
+        </menu>
+    </item>
+</menu>
