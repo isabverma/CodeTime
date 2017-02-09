@@ -15,21 +15,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:maxHeight="20px"
-        android:maxWidth="20px"
-        android:src="@android:drawable/sym_def_app_icon" />
+        android:maxHeight="30px"
+        android:maxWidth="30px"
+        android:minHeight="50dp"
+        android:minWidth="50dp"
+        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Let's Code - GIT"
+        android:text="@string/app_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GIT at your fingre tips" />
+        android:text="Code samples at your finger tips" />
 
 </LinearLayout>

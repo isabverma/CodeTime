@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "631194556978",
-    "firebase_url": "https://codetime-c845a.firebaseio.com",
-    "project_id": "codetime-c845a",
-    "storage_bucket": "codetime-c845a.appspot.com"
+    "project_number": "932138012665",
+    "firebase_url": "https://lets-code-cfe3e.firebaseio.com",
+    "project_id": "lets-code-cfe3e",
+    "storage_bucket": "lets-code-cfe3e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:631194556978:android:adf134017a8dd268",
+        "mobilesdk_app_id": "1:932138012665:android:fd03d7e4a8a1e71e",
         "android_client_info": {
-          "package_name": "org.codetime"
+          "package_name": "com.isabverma.letscode"
         }
       },
       "oauth_client": [
         {
-          "client_id": "631194556978-p3mr0om70ttm6vtabi19ap01pvupmo0n.apps.googleusercontent.com",
+          "client_id": "932138012665-ben8fq89lat9u511fo3486liiff3fh38.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA4RefsOhHl3dL5L46Foln5ONAvnaUzi3w"
+          "current_key": "AIzaSyBHgVpyQWamDPwmOGSZ7kTU0NQpFGzBq2w"
         }
       ],
       "services": {
@@ -32,7 +32,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "631194556978-p3mr0om70ttm6vtabi19ap01pvupmo0n.apps.googleusercontent.com",
+              "client_id": "932138012665-ben8fq89lat9u511fo3486liiff3fh38.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
