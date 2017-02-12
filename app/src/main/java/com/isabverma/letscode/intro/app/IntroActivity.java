@@ -48,7 +48,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextSwitcher;
+import android.widget.Toast;
 
+import com.isabverma.letscode.MainActivity;
 import com.isabverma.letscode.R;
 import com.isabverma.letscode.intro.slide.ButtonCtaSlide;
 import com.isabverma.letscode.intro.slide.Slide;
@@ -362,7 +364,9 @@ public class IntroActivity extends AppCompatActivity {
 
     public void nextSlide() {
         int currentItem = pager.getCurrentItem();
-        if (currentItem > adapter.getCount() - 1) finishIfNeeded();
+        if (currentItem > adapter.getCount() - 1) {
+            finishIfNeeded();
+        }
 
         if (canGoForward(currentItem, true)) {
             smoothScrollPagerTo(++currentItem);
@@ -465,10 +469,19 @@ public class IntroActivity extends AppCompatActivity {
     private boolean finishIfNeeded() {
         if (positionOffset == 0 && position == adapter.getCount()) {
             Intent returnIntent = onSendActivityResult(RESULT_OK);
-            if (returnIntent != null)
+            if (returnIntent != null) {
                 setResult(RESULT_OK, returnIntent);
-            else
+            }
+            else{
                 setResult(RESULT_OK);
+                Intent intent = new Intent(IntroActivity.this,MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                finish();
+            }
+
             finish();
             overridePendingTransition(0, 0);
             return true;

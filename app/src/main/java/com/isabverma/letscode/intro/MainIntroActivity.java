@@ -4,18 +4,26 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.view.Gravity;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.auth.FirebaseAuth;
 import com.isabverma.letscode.R;
 import com.isabverma.letscode.intro.app.IntroActivity;
 import com.isabverma.letscode.intro.app.OnNavigationBlockedListener;
-import com.isabverma.letscode.intro.slide.FragmentSlide;
 import com.isabverma.letscode.intro.slide.SimpleSlide;
 import com.isabverma.letscode.intro.slide.Slide;
 
-public class MainIntroActivity extends IntroActivity {
+
+public class MainIntroActivity extends IntroActivity{
+
+    private static final int RC_SIGN_IN = 9001;
+
+    private FirebaseAuth mAuth;
+
+    private Slide loginSlide;
 
     public static final String EXTRA_FULLSCREEN = "com.isabverma.letscode.intro.EXTRA_FULLSCREEN";
     public static final String EXTRA_SCROLLABLE = "com.isabverma.letscode.intro.EXTRA_SCROLLABLE";
@@ -39,11 +47,18 @@ public class MainIntroActivity extends IntroActivity {
         boolean showNext = intent.getBooleanExtra(EXTRA_SHOW_NEXT, true);
         boolean skipEnabled = intent.getBooleanExtra(EXTRA_SKIP_ENABLED, true);
         boolean finishEnabled = intent.getBooleanExtra(EXTRA_FINISH_ENABLED, true);
-        boolean getStartedEnabled = intent.getBooleanExtra(EXTRA_GET_STARTED_ENABLED, true);
+        boolean getStartedEnabled = intent.getBooleanExtra(EXTRA_GET_STARTED_ENABLED, false);
 
         setFullscreen(fullscreen);
 
         super.onCreate(savedInstanceState);
+
+        mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            customFragments = false;
+        } else {
+            customFragments = true;
+        }
 
         setButtonBackFunction(skipEnabled ? BUTTON_BACK_FUNCTION_SKIP : BUTTON_BACK_FUNCTION_BACK);
         setButtonNextFunction(finishEnabled ? BUTTON_NEXT_FUNCTION_NEXT_FINISH : BUTTON_NEXT_FUNCTION_NEXT);
@@ -53,10 +68,10 @@ public class MainIntroActivity extends IntroActivity {
         setButtonCtaTintMode(BUTTON_CTA_TINT_MODE_TEXT);
 
         addSlide(new SimpleSlide.Builder()
-                .title(R.string.title_material_metaphor)
-                .description(R.string.description_material_metaphor)
-                .image(R.drawable.art_material_metaphor)
-                .background(R.color.color_material_metaphor)
+                .title(R.string.slide_1_title)
+                .description(R.string.slide_1_desc)
+                .image(R.drawable.ic_food)
+                .background(R.color.bg_screen1)
                 .backgroundDark(R.color.color_dark_material_metaphor)
                 .scrollable(scrollable)
                 .build());
@@ -69,16 +84,6 @@ public class MainIntroActivity extends IntroActivity {
                 .backgroundDark(R.color.color_dark_material_bold)
                 .scrollable(scrollable)
                 .buttonCtaLabel("Hello")
-                .buttonCtaClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast toast = Toast.makeText(MainIntroActivity.this, R.string.toast_button_cta, Toast.LENGTH_SHORT);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
-
-                        nextSlide();
-                    }
-                })
                 .build());
 
         addSlide(new SimpleSlide.Builder()
@@ -100,53 +105,42 @@ public class MainIntroActivity extends IntroActivity {
                 .build());
 
         final Slide permissionsSlide;
-        if (permissions) {
+        int permissionCheck = ContextCompat.checkSelfPermission(MainIntroActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+       if(permissionCheck==0){
+            permissionsSlide = null;
+            removeSlide(permissionsSlide);
+        }else {
             permissionsSlide = new SimpleSlide.Builder()
                     .title(R.string.title_permissions)
                     .description(R.string.description_permissions)
                     .background(R.color.color_permissions)
                     .backgroundDark(R.color.color_dark_permissions)
                     .scrollable(scrollable)
-                    .permissions(new String[]{Manifest.permission.CAMERA,
+                    .permissions(new String[]{Manifest.permission.INTERNET,
                             Manifest.permission.WRITE_EXTERNAL_STORAGE})
                     .build();
             addSlide(permissionsSlide);
-        } else {
-            permissionsSlide = null;
         }
 
-        final Slide loginSlide;
         if (customFragments) {
-            loginSlide = new FragmentSlide.Builder()
-                    .background(R.color.color_custom_fragment_1)
-                    .backgroundDark(R.color.color_dark_custom_fragment_1)
-                    .fragment(LoginFragment.newInstance())
+            loginSlide = new SimpleSlide.Builder()
+                    .title("title login")
+                    .description("description login")
+                    .background(R.color.color_permissions)
+                    .backgroundDark(R.color.color_dark_permissions)
+                    .scrollable(scrollable)
+                    .buttonCtaLabel("Sign In please")
+                    .buttonCtaClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startSignIn();
+                        }
+                    })
                     .build();
             addSlide(loginSlide);
-
-            addSlide(new FragmentSlide.Builder()
-                    .background(R.color.color_custom_fragment_2)
-                    .backgroundDark(R.color.color_dark_custom_fragment_2)
-                    .fragment(R.layout.fragment_custom, R.style.AppThemeDark)
-                    .build());
         } else {
             loginSlide = null;
         }
-
-        //Feel free to add a navigation policy to define when users can go forward/backward
-        /*
-        setNavigationPolicy(new NavigationPolicy() {
-            @Override
-            public boolean canGoForward(int position) {
-                return true;
-            }
-
-            @Override
-            public boolean canGoBackward(int position) {
-                return true;
-            }
-        });
-        */
 
         addOnNavigationBlockedListener(new OnNavigationBlockedListener() {
             @Override
@@ -164,25 +158,37 @@ public class MainIntroActivity extends IntroActivity {
             }
         });
 
-        //Feel free to add and remove page change listeners
-        /*
-        addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            if (resultCode == RESULT_OK) {
+                // Sign in succeeded
+                Toast.makeText(this, "Signed in Successful", Toast.LENGTH_SHORT).show();
+                removeSlide(loginSlide);
+
+            } else {
+                // Sign in failed
+                Toast.makeText(this, "Sign In Failed", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
 
-            @Override
-            public void onPageSelected(int position) {
+    private void startSignIn() {
+        // Build FirebaseUI sign in intent. For documentation on this operation and all
+        // possible customization see: https://github.com/firebase/firebaseui-android
+        Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
+                //.setIsSmartLockEnabled(!BuildConfig.DEBUG)
+                .setProviders(AuthUI.EMAIL_PROVIDER)
+                .setLogo(R.mipmap.ic_launcher)
+                .build();
 
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-        */
+        startActivityForResult(intent, RC_SIGN_IN);
     }
 
 }

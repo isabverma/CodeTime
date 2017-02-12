@@ -2,20 +2,13 @@ package com.isabverma.letscode.intro.slide;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.ColorUtils;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,27 +29,19 @@ public class SimpleSlide implements Slide, RestorableSlide, ButtonCtaSlide {
 
 
     private final CharSequence title;
-    @StringRes
     private final int titleRes;
     private final CharSequence description;
-    @StringRes
     private final int descriptionRes;
-    @DrawableRes
     private final int imageRes;
-    @LayoutRes
     private final int layoutRes;
 
-
-    @ColorRes
     private final int backgroundRes;
-    @ColorRes
     private final int backgroundDarkRes;
     private final boolean canGoForward;
     private final boolean canGoBackward;
     private String[] permissions;
     private int permissionsRequestCode;
     private CharSequence buttonCtaLabel = null;
-    @StringRes
     private int buttonCtaLabelRes = 0;
     private View.OnClickListener buttonCtaClickListener = null;
 
@@ -226,36 +211,29 @@ public class SimpleSlide implements Slide, RestorableSlide, ButtonCtaSlide {
     }
 
     public static class Builder {
-        @ColorRes
         private int backgroundRes = 0;
-        @ColorRes
         private int backgroundDarkRes = 0;
         private CharSequence title = null;
-        @StringRes
         private int titleRes = 0;
         private CharSequence description = null;
-        @StringRes
         private int descriptionRes = 0;
-        @DrawableRes
         private int imageRes = 0;
-        @LayoutRes
         private int layoutRes = R.layout.fragment_simple_slide;
         private boolean canGoForward = true;
         private boolean canGoBackward = true;
         private String[] permissions = null;
         private CharSequence buttonCtaLabel = null;
-        @StringRes
         private int buttonCtaLabelRes = 0;
         private View.OnClickListener buttonCtaClickListener = null;
 
         private int permissionsRequestCode = DEFAULT_PERMISSIONS_REQUEST_CODE;
 
-        public Builder background(@ColorRes int backgroundRes) {
+        public Builder background(int backgroundRes) {
             this.backgroundRes = backgroundRes;
             return this;
         }
 
-        public Builder backgroundDark(@ColorRes int backgroundDarkRes) {
+        public Builder backgroundDark(int backgroundDarkRes) {
             this.backgroundDarkRes = backgroundDarkRes;
             return this;
         }
@@ -266,19 +244,8 @@ public class SimpleSlide implements Slide, RestorableSlide, ButtonCtaSlide {
             return this;
         }
 
-        public Builder titleHtml(String titleHtml) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                this.title = Html.fromHtml(titleHtml, Html.FROM_HTML_MODE_LEGACY);
-            }
-            else {
-                //noinspection deprecation
-                this.title = Html.fromHtml(titleHtml);
-            }
-            this.titleRes = 0;
-            return this;
-        }
 
-        public Builder title(@StringRes int titleRes) {
+        public Builder title( int titleRes) {
             this.titleRes = titleRes;
             this.title = null;
             return this;
@@ -290,30 +257,19 @@ public class SimpleSlide implements Slide, RestorableSlide, ButtonCtaSlide {
             return this;
         }
 
-        public Builder descriptionHtml(String descriptionHtml) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                this.description = Html.fromHtml(descriptionHtml, Html.FROM_HTML_MODE_LEGACY);
-            }
-            else {
-                //noinspection deprecation
-                this.description = Html.fromHtml(descriptionHtml);
-            }
-            this.descriptionRes = 0;
-            return this;
-        }
 
-        public Builder description(@StringRes int descriptionRes) {
+        public Builder description(int descriptionRes) {
             this.descriptionRes = descriptionRes;
             this.description = null;
             return this;
         }
 
-        public Builder image(@DrawableRes int imageRes) {
+        public Builder image(int imageRes) {
             this.imageRes = imageRes;
             return this;
         }
 
-        public Builder layout(@LayoutRes int layoutRes) {
+        public Builder layout(int layoutRes) {
             this.layoutRes = layoutRes;
             return this;
         }
@@ -355,19 +311,7 @@ public class SimpleSlide implements Slide, RestorableSlide, ButtonCtaSlide {
             return this;
         }
 
-        public Builder buttonCtaLabelHtml(String buttonCtaLabelHtml) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                this.buttonCtaLabel = Html.fromHtml(buttonCtaLabelHtml, Html.FROM_HTML_MODE_LEGACY);
-            }
-            else {
-                //noinspection deprecation
-                this.buttonCtaLabel = Html.fromHtml(buttonCtaLabelHtml);
-            }
-            this.buttonCtaLabelRes = 0;
-            return this;
-        }
-
-        public Builder buttonCtaLabel(@StringRes int buttonCtaLabelRes) {
+        public Builder buttonCtaLabel(int buttonCtaLabelRes) {
             this.buttonCtaLabelRes = buttonCtaLabelRes;
             this.buttonCtaLabel = null;
             return this;
@@ -407,10 +351,10 @@ public class SimpleSlide implements Slide, RestorableSlide, ButtonCtaSlide {
         public SimpleSlideFragment() {
         }
 
-        public static SimpleSlideFragment newInstance(CharSequence title, @StringRes int titleRes,
-                                                      CharSequence description, @StringRes int descriptionRes,
-                                                      @DrawableRes int imageRes, @ColorRes int backgroundRes,
-                                                      @LayoutRes int layout, int permissionsRequestCode) {
+        public static SimpleSlideFragment newInstance(CharSequence title, int titleRes,
+                                                      CharSequence description, int descriptionRes,
+                                                      int imageRes, int backgroundRes,
+                                                      int layout, int permissionsRequestCode) {
             Bundle arguments = new Bundle();
             arguments.putCharSequence(ARGUMENT_TITLE, title);
             arguments.putInt(ARGUMENT_TITLE_RES, titleRes);
@@ -495,10 +439,8 @@ public class SimpleSlide implements Slide, RestorableSlide, ButtonCtaSlide {
                     imageView.setVisibility(View.GONE);
                 }
             }
-            
-            @ColorInt
+
             int textColorPrimary;
-            @ColorInt
             int textColorSecondary;
 
             if (backgroundRes != 0 &&
@@ -511,7 +453,7 @@ public class SimpleSlide implements Slide, RestorableSlide, ButtonCtaSlide {
                 textColorPrimary = ContextCompat.getColor(getContext(), R.color.mi_text_color_primary_light);
                 textColorSecondary = ContextCompat.getColor(getContext(), R.color.mi_text_color_secondary_light);
             }
-            
+
             if (titleView != null) {
                 titleView.setTextColor(textColorPrimary);
             }

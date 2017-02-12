@@ -7,8 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -19,26 +17,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.JavascriptInterface;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-
-import com.google.firebase.crash.FirebaseCrash;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.isabverma.letscode.auth.FirebaseUIActivity;
+import com.isabverma.letscode.bean.CategoryBean;
+import com.isabverma.letscode.bean.ProductBean;
+import com.isabverma.letscode.bean.TopDrawerViewBean;
 import com.isabverma.letscode.intro.MainIntroActivity;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Context context;
-    String folderPath = "file:android_asset/";
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +46,24 @@ public class MainActivity extends AppCompatActivity
         LinearLayout mainLayout = (LinearLayout) findViewById(R.id.main_container);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.content_main, null);
-        final WebView webView = (WebView)layout.findViewById(R.id.content_main_web_view);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(folderPath + "index.html");
-        getSupportActionBar().setTitle("GIT Basics");
         mainLayout.removeAllViews();
         mainLayout.addView(layout);
+
+
+        ProductBean productBean1 = new ProductBean("Java", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
+        ProductBean productBean2 = new ProductBean("HTML", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
+        ProductBean productBean3 = new ProductBean("CSS", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
+        ProductBean productBean4 = new ProductBean("JavaScript", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
+        ProductBean productBean5 = new ProductBean("Spring", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
+        ProductBean productBean6 = new ProductBean("Hibernate", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
+
+        CategoryBean categoryBean1 = new CategoryBean("Languages",Arrays.asList(productBean1,productBean2,productBean3,productBean4));
+        CategoryBean categoryBean2 = new CategoryBean("Frameworks",Arrays.asList(productBean5,productBean6));
+        TopDrawerViewBean topDrawerViewBean = new TopDrawerViewBean(Arrays.asList(categoryBean1,categoryBean2));
+
+        //database = FirebaseDatabase.getInstance();
+        //myRef = database.getReference("DrawerSetup");
+        //myRef.setValue(topDrawerViewBean);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -124,9 +133,11 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this,MainIntroActivity.class);
             startActivity(intent);
         }else if(id == R.id.action_feedback){
-            Toast.makeText(this, "Feedback Selected..!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Feedback Selected..!!!!!!!!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this,FirebaseUIActivity.class);
+            startActivity(intent);
         }else if(id == R.id.action_rate_us){ //for rate us
-            Uri uri = Uri.parse("market://details?id=com.isabverma.letscode.git");
+            Uri uri = Uri.parse("market://details?id=com.isabverma.letscode");
             Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
             // To count with Play market backstack, After pressing back button,
             // to taken back to our application, we need to add following flags to intent.
@@ -137,6 +148,8 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName()))); }
         }else if(id == R.id.action_share){
             Toast.makeText(this, "Share Selected..!!!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this,WelcomeActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -149,12 +162,6 @@ public class MainActivity extends AppCompatActivity
         LinearLayout mainLayout = (LinearLayout) findViewById(R.id.main_container);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.content_main, null);
-        WebView webView = (WebView)layout.findViewById(R.id.content_main_web_view);
-        webView.getSettings().setJavaScriptEnabled(true);
-        getSupportActionBar().setTitle(item.getTitle());
-        webView.loadUrl(folderPath + item.getTitleCondensed() + ".html");
-        mainLayout.removeAllViews();
-        mainLayout.addView(layout);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

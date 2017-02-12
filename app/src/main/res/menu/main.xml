@@ -5,7 +5,6 @@
         android:id="@+id/action_settings"
         android:title="@string/action_settings" />
     <item android:title="About and Help">
-        <menu>
             <item
                 android:id="@+id/action_about_developers"
                 android:title="About Us" />
@@ -18,7 +17,6 @@
             <item
                 android:id="@+id/action_share"
                 android:title="Share" />
-        </menu>
     </item>
 
 </menu>
