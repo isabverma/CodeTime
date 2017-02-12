@@ -26,14 +26,14 @@ public class SplashActivity extends Activity {
         timerThread = new Thread() {
             public void run() {
                 try {
-                    sleep(1800);
+                    sleep(1200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }finally{
                     if (!firstTime) {
                         intent = new Intent(SplashActivity.this,MainActivity.class);
                     }else{
-                        prefManager.setFirstTimeLaunch(false);
+                        //prefManager.setFirstTimeLaunch(false);
                         intent = new Intent(SplashActivity.this,MainIntroActivity.class);
                     }
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

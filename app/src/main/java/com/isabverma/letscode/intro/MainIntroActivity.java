@@ -70,37 +70,37 @@ public class MainIntroActivity extends IntroActivity{
         addSlide(new SimpleSlide.Builder()
                 .title(R.string.slide_1_title)
                 .description(R.string.slide_1_desc)
-                .image(R.drawable.ic_food)
+                .image(R.drawable.intro_screen_1)
                 .background(R.color.bg_screen1)
-                .backgroundDark(R.color.color_dark_material_metaphor)
+                .backgroundDark(R.color.dot_dark_screen1)
                 .scrollable(scrollable)
                 .build());
 
         addSlide(new SimpleSlide.Builder()
-                .title(R.string.title_material_bold)
-                .description(R.string.description_material_bold)
-                .image(R.drawable.art_material_bold)
-                .background(R.color.color_material_bold)
-                .backgroundDark(R.color.color_dark_material_bold)
+                .title(R.string.slide_2_title)
+                .description(R.string.slide_2_desc)
+                .image(R.drawable.intro_screen_2)
+                .background(R.color.bg_screen2)
+                .backgroundDark(R.color.dot_dark_screen2)
                 .scrollable(scrollable)
                 .buttonCtaLabel("Hello")
                 .build());
 
         addSlide(new SimpleSlide.Builder()
-                .title(R.string.title_material_motion)
-                .description(R.string.description_material_motion)
-                .image(R.drawable.art_material_motion)
-                .background(R.color.color_material_motion)
-                .backgroundDark(R.color.color_dark_material_motion)
+                .title(R.string.slide_3_title)
+                .description(R.string.slide_3_desc)
+                .image(R.drawable.intro_screen_3)
+                .background(R.color.bg_screen3)
+                .backgroundDark(R.color.dot_dark_screen3)
                 .scrollable(scrollable)
                 .build());
 
         addSlide(new SimpleSlide.Builder()
-                .title(R.string.title_material_shadow)
-                .description(R.string.description_material_shadow)
-                .image(R.drawable.art_material_shadow)
-                .background(R.color.color_material_shadow)
-                .backgroundDark(R.color.color_dark_material_shadow)
+                .title(R.string.slide_4_title)
+                .description(R.string.slide_4_desc)
+                .image(R.drawable.intro_screen_4)
+                .background(R.color.bg_screen4)
+                .backgroundDark(R.color.dot_dark_screen4)
                 .scrollable(scrollable)
                 .build());
 
@@ -111,10 +111,11 @@ public class MainIntroActivity extends IntroActivity{
             removeSlide(permissionsSlide);
         }else {
             permissionsSlide = new SimpleSlide.Builder()
-                    .title(R.string.title_permissions)
-                    .description(R.string.description_permissions)
-                    .background(R.color.color_permissions)
-                    .backgroundDark(R.color.color_dark_permissions)
+                    .title(R.string.slide_5_title)
+                    .description(R.string.slide_5_desc)
+                    .image(R.drawable.intro_screen_5)
+                    .background(R.color.bg_screen5)
+                    .backgroundDark(R.color.dot_dark_screen5)
                     .scrollable(scrollable)
                     .permissions(new String[]{Manifest.permission.INTERNET,
                             Manifest.permission.WRITE_EXTERNAL_STORAGE})
@@ -124,10 +125,11 @@ public class MainIntroActivity extends IntroActivity{
 
         if (customFragments) {
             loginSlide = new SimpleSlide.Builder()
-                    .title("title login")
-                    .description("description login")
-                    .background(R.color.color_permissions)
-                    .backgroundDark(R.color.color_dark_permissions)
+                    .title(R.string.slide_6_title)
+                    .description(R.string.slide_6_desc)
+                    .image(R.drawable.intro_screen_6)
+                    .background(R.color.bg_screen6)
+                    .backgroundDark(R.color.dot_dark_screen6)
                     .scrollable(scrollable)
                     .buttonCtaLabel("Sign In please")
                     .buttonCtaClickListener(new View.OnClickListener() {

@@ -148,8 +148,6 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName()))); }
         }else if(id == R.id.action_share){
             Toast.makeText(this, "Share Selected..!!!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this,WelcomeActivity.class);
-            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

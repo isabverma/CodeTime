@@ -17,12 +17,17 @@
     <color name="bg_screen2">#20d2bb</color>
     <color name="bg_screen3">#3395ff</color>
     <color name="bg_screen4">#c873f4</color>
+    <color name="bg_screen5">#2980b9</color>
+    <color name="bg_screen6">#ff5722</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen1">#d1395c</color>
     <color name="dot_dark_screen2">#14a895</color>
     <color name="dot_dark_screen3">#2278d4</color>
     <color name="dot_dark_screen4">#a854d4</color>
+    <color name="dot_dark_screen5">#226997</color>
+    <color name="dot_dark_screen6">#e64a19</color>
+
 
     <!-- dots active colors -->
     <color name="dot_light_screen1">#f98da5</color>
