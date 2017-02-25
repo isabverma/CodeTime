@@ -9,6 +9,9 @@
                 android:id="@+id/action_about_developers"
                 android:title="About Us" />
             <item
+                android:id="@+id/action_account"
+                android:title="My Account"/>
+            <item
                 android:id="@+id/action_feedback"
                 android:title="Feedback" />
             <item

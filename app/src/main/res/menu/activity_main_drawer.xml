@@ -3,119 +3,50 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/index"
+            android:id="@+id/Home"
             android:icon="@android:drawable/star_on"
-            android:title="Git - Home"
-            android:titleCondensed="index" />
+            android:title="Home" />
     </group>
 
-    <item android:title="Tutorials">
+
+    <item android:title="Languages">
         <menu>
             <item
-                android:id="@+id/git_basic_concepts"
+                android:id="@+id/Java"
                 android:icon="@android:drawable/star_on"
-                android:title="Git - Basic Concepts"
-                android:titleCondensed="git_basic_concepts" />
+                android:title="Java" />
             <item
-                android:id="@+id/git_environment"
+                android:id="@+id/HTML"
                 android:icon="@android:drawable/star_on"
-                android:title="Git - Environment Setup"
-                android:titleCondensed="git_environment" />
+                android:title="HTML" />
             <item
-                android:id="@+id/git_life_cycle"
+                android:id="@+id/CSS"
                 android:icon="@android:drawable/star_on"
-                android:title="Git - Life Cycle"
-                android:titleCondensed="git_life_cycle" />
+                android:title="CSS" />
+        </menu>
+    </item>
+    <item android:title="Frameworks">
+        <menu>
             <item
-                android:id="@+id/git_create_operation"
+                android:id="@+id/Spring"
                 android:icon="@android:drawable/star_on"
-                android:title="Git - Create Operation"
-                android:titleCondensed="git_create_operation" />
+                android:title="Spring" />
             <item
-                android:id="@+id/git_clone_operation"
+                android:id="@+id/Hibernate"
                 android:icon="@android:drawable/star_on"
-                android:title="Git - Clone Operation"
-                android:titleCondensed="git_clone_operation" />
+                android:title="Hibernate" />
+        </menu>
+    </item>
+    <item android:title="Versioning Tools">
+        <menu>
             <item
-                android:id="@+id/git_perform_changes"
+                android:id="@+id/GIT"
                 android:icon="@android:drawable/star_on"
-                android:title="Git - Perform Changes"
-                android:titleCondensed="git_perform_changes" />
+                android:title="GIT" />
             <item
-                android:id="@+id/git_review_changes"
+                android:id="@+id/SVN"
                 android:icon="@android:drawable/star_on"
-                android:title="Git - Review Changes"
-                android:titleCondensed="git_review_changes" />
-            <item
-                android:id="@+id/git_commit_changes"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Commit Changes"
-                android:titleCondensed="git_commit_changes" />
-            <item
-                android:id="@+id/git_push_operation"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Push Operation"
-                android:titleCondensed="git_push_operation" />
-            <item
-                android:id="@+id/git_update_operation"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Update Operation"
-                android:titleCondensed="git_update_operation" />
-            <item
-                android:id="@+id/git_stash_operation"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Stash Operation"
-                android:titleCondensed="git_stash_operation" />
-            <item
-                android:id="@+id/git_move_operation"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Move Operation"
-                android:titleCondensed="git_move_operation" />
-            <item
-                android:id="@+id/git_rename_operation"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Rename Operation"
-                android:titleCondensed="git_rename_operation" />
-            <item
-                android:id="@+id/git_delete_operation"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Delete Operation"
-                android:titleCondensed="git_delete_operation" />
-            <item
-                android:id="@+id/git_fix_mistakes"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Fix Mistakes"
-                android:titleCondensed="git_fix_mistakes" />
-            <item
-                android:id="@+id/git_tag_operation"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Tag Operation"
-                android:titleCondensed="git_tag_operation" />
-            <item
-                android:id="@+id/git_patch_operation"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Patch Operation"
-                android:titleCondensed="git_patch_operation" />
-            <item
-                android:id="@+id/git_managing_branches"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Managing Branches"
-                android:titleCondensed="git_managing_branches" />
-            <item
-                android:id="@+id/git_handling_conflicts"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Handling Conflicts"
-                android:titleCondensed="git_handling_conflicts" />
-            <item
-                android:id="@+id/git_different_platforms"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Different Platforms"
-                android:titleCondensed="git_different_platforms" />
-            <item
-                android:id="@+id/git_online_repositories"
-                android:icon="@android:drawable/star_on"
-                android:title="Git - Online Repositories"
-                android:titleCondensed="git_online_repositories" />
+                android:title="SVN" />
         </menu>
     </item>
 </menu>

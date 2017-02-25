@@ -9,13 +9,9 @@
     tools:context="com.isabverma.letscode.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-        <WebView
-            android:id="@+id/content_main_web_view"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbarAlwaysDrawHorizontalTrack="false"
-            android:scrollbarAlwaysDrawVerticalTrack="false"
-            android:scrollbars="none"
-            android:scrollIndicators="none" />
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"/>
 
 </LinearLayout>

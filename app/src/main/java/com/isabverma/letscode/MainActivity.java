@@ -17,25 +17,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.isabverma.letscode.auth.FirebaseUIActivity;
-import com.isabverma.letscode.bean.CategoryBean;
-import com.isabverma.letscode.bean.ProductBean;
-import com.isabverma.letscode.bean.TopDrawerViewBean;
 import com.isabverma.letscode.intro.MainIntroActivity;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Context context;
-    FirebaseDatabase database;
-    DatabaseReference myRef;
+    ExpandableListAdapter listAdapter;
+    ExpandableListView expListView;
+    List<String> listDataHeader;
+    HashMap<String, List<String>> listDataChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,21 +49,6 @@ public class MainActivity extends AppCompatActivity
         mainLayout.removeAllViews();
         mainLayout.addView(layout);
 
-
-        ProductBean productBean1 = new ProductBean("Java", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
-        ProductBean productBean2 = new ProductBean("HTML", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
-        ProductBean productBean3 = new ProductBean("CSS", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
-        ProductBean productBean4 = new ProductBean("JavaScript", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
-        ProductBean productBean5 = new ProductBean("Spring", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
-        ProductBean productBean6 = new ProductBean("Hibernate", Arrays.asList("Basic", "Proficient", "Expert", "Test Yourself Q & A", "Interview Q & A"));
-
-        CategoryBean categoryBean1 = new CategoryBean("Languages",Arrays.asList(productBean1,productBean2,productBean3,productBean4));
-        CategoryBean categoryBean2 = new CategoryBean("Frameworks",Arrays.asList(productBean5,productBean6));
-        TopDrawerViewBean topDrawerViewBean = new TopDrawerViewBean(Arrays.asList(categoryBean1,categoryBean2));
-
-        //database = FirebaseDatabase.getInstance();
-        //myRef = database.getReference("DrawerSetup");
-        //myRef.setValue(topDrawerViewBean);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -132,10 +117,12 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "About Developers Selected..!!!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this,MainIntroActivity.class);
             startActivity(intent);
-        }else if(id == R.id.action_feedback){
+        }else if(id == R.id.action_account){
             Toast.makeText(this, "Feedback Selected..!!!!!!!!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this,FirebaseUIActivity.class);
             startActivity(intent);
+        }else if(id == R.id.action_feedback) {
+            Toast.makeText(this, "Feedback Selected..!!!", Toast.LENGTH_SHORT).show();
         }else if(id == R.id.action_rate_us){ //for rate us
             Uri uri = Uri.parse("market://details?id=com.isabverma.letscode");
             Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
@@ -157,12 +144,69 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        LinearLayout mainLayout = (LinearLayout) findViewById(R.id.main_container);
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.content_main, null);
+
+        if (id == R.id.Home) {
+            LinearLayout mainLayout = (LinearLayout) findViewById(R.id.main_container);
+            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.content_not_available, null);
+            mainLayout.removeAllViews();
+            mainLayout.addView(layout);
+        } else if (id == R.id.Java) {
+            LinearLayout mainLayout = (LinearLayout) findViewById(R.id.main_container);
+            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.content_not_available, null);
+            mainLayout.removeAllViews();
+            mainLayout.addView(layout);
+        } else if (id == R.id.HTML) {
+            LinearLayout mainLayout = (LinearLayout) findViewById(R.id.main_container);
+            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.product_type, null);
+            mainLayout.removeAllViews();
+            mainLayout.addView(layout);
+            expListView = (ExpandableListView) findViewById(R.id.product_type_expendable_listview);
+            prepareListData();
+            listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
+            expListView.setAdapter(listAdapter);
+        }else{
+            LinearLayout mainLayout = (LinearLayout) findViewById(R.id.main_container);
+            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.content_not_available, null);
+            mainLayout.removeAllViews();
+            mainLayout.addView(layout);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    private void prepareListData() {
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
+
+        // Adding child data
+        listDataHeader.add("Basics (Level 1)");
+        listDataHeader.add("Proficient (Level 2)");
+        listDataHeader.add("Expert (Level 3)");
+
+        // Adding child data
+        List<String> basics = new ArrayList<String>();
+        basics.add("What is HTML");
+        basics.add("Requirements");
+        basics.add("html tag");
+        basics.add("head tag");
+        basics.add("body tag");
+        basics.add("title tag");
+
+        List<String> proficient = new ArrayList<String>();
+        proficient.add("Coding standards");
+        proficient.add("HTML vs XHTML");
+
+        List<String> expert = new ArrayList<String>();
+        expert.add("meta tag");
+        expert.add("Web page Structuring");
+
+        listDataChild.put(listDataHeader.get(0), basics); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), proficient);
+        listDataChild.put(listDataHeader.get(2), expert);
     }
 }
