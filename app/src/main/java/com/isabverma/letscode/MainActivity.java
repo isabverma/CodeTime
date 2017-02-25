@@ -118,7 +118,6 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this,MainIntroActivity.class);
             startActivity(intent);
         }else if(id == R.id.action_account){
-            Toast.makeText(this, "Feedback Selected..!!!!!!!!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this,FirebaseUIActivity.class);
             startActivity(intent);
         }else if(id == R.id.action_feedback) {

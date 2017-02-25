@@ -187,7 +187,7 @@ public class MainIntroActivity extends IntroActivity{
         Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                 //.setIsSmartLockEnabled(!BuildConfig.DEBUG)
                 .setProviders(AuthUI.EMAIL_PROVIDER)
-                .setLogo(R.mipmap.ic_launcher)
+                .setLogo(R.drawable.ic_launcher)
                 .build();
 
         startActivityForResult(intent, RC_SIGN_IN);

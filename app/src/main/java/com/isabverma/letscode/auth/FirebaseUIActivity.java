@@ -13,12 +13,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.isabverma.letscode.BuildConfig;
 import com.isabverma.letscode.R;
 
-/**
- * Demonstrate authentication using the FirebaseUI-Android library. This activity demonstrates
- * using FirebaseUI for basic email/password sign in.
- *
- * For more information, visit https://github.com/firebase/firebaseui-android
- */
 public class FirebaseUIActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int RC_SIGN_IN = 9001;
@@ -26,7 +20,6 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
     private FirebaseAuth mAuth;
 
     private TextView mStatusView;
-    private TextView mDetailView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +29,6 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
         mAuth = FirebaseAuth.getInstance();
 
         mStatusView = (TextView) findViewById(R.id.status);
-        mDetailView = (TextView) findViewById(R.id.detail);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
@@ -70,7 +62,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
         Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                 //.setIsSmartLockEnabled(!BuildConfig.DEBUG)
                 .setProviders(AuthUI.EMAIL_PROVIDER)
-                .setLogo(R.mipmap.ic_launcher)
+                .setLogo(R.drawable.ic_launcher)
                 .build();
 
         startActivityForResult(intent, RC_SIGN_IN);
@@ -80,14 +72,12 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
         if (user != null) {
             // Signed in
             mStatusView.setText(getString(R.string.firebaseui_status_fmt, user.getEmail()));
-            mDetailView.setText(getString(R.string.id_fmt, user.getUid()));
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
         } else {
             // Signed out
             mStatusView.setText(R.string.signed_out);
-            mDetailView.setText(null);
 
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_button).setVisibility(View.GONE);

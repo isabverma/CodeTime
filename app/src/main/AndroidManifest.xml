@@ -43,7 +43,7 @@
 
         <activity
             android:name=".auth.FirebaseUIActivity"
-            android:label="@string/label_firebase_ui"/>
+            android:label="Manage Account"/>
 
 
         <!-- [START firebase_service] -->

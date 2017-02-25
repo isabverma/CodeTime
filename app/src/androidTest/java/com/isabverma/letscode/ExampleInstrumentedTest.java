@@ -1,4 +1,4 @@
-package org.codetime;
+package com.isabverma.letscode;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
