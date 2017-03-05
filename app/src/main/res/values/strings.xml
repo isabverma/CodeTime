@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Let\'s Code</string>
-    <string name="banner_ad_unit_id">ca-app-pub-6405189849341787/4360301757</string>
-
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
@@ -28,9 +26,8 @@
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
 
-    
-	
-	<string name="title_language_list">Languages</string>
+
+    <string name="title_language_list">Languages</string>
     <string name="title_language_detail">Language Detail</string>
     <string name="title_activity_main">MainActivity</string>
 
@@ -45,49 +42,6 @@
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
-
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
-
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
     <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>
 
@@ -98,56 +52,9 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_feedback">FeedbackActivity</string>
-	
-	
-	
-    <string name="hint_user_id">User ID</string>
-    <string name="get_custom_token">Get Token</string>
-    <string name="sign_in">Sign In</string>
-    <string name="create_account">Create Account</string>
-    <string name="sign_out">Sign Out</string>
-    <string name="verify_email">Verify Email</string>
-    <string name="disconnect">Disconnect</string>
-    <string name="loading">Loading…</string>
-    <string name="custom_token">Custom Token</string>
-    <string name="signed_out">Signed Out</string>
-    <string name="token_null">Token: null</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
-    <string name="desc_firebase_lockup">Firebase logo and name</string>
-    <string name="auth_failed">Authentication failed</string>
 
-    <string name="firebase_status_fmt">Firebase User: %s</string>
-    <string name="firebase_user_management">Firebase User Management</string>
-
-    <string name="google_status_fmt">Google User: %s</string>
-    <string name="google_title_text">Google Sign In</string>
-
-    <string name="facebook_status_fmt">Facebook User: %s</string>
-    <string name="facebook_title_text">Facebook Login</string>
-
-    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
-    <string name="emailpassword_title_text">Email and Password</string>
-
-    <string name="twitter_status_fmt">Twitter User: %s</string>
-    <string name="twitter_title_text">Twitter Login</string>
 
     <string name="firebaseui_status_fmt">Logged in as %s</string>
-    <string name="firebaseui_title_text">FirebaseUI Auth</string>
-
-    <string name="id_fmt">User ID: %s</string>
-    <string name="email_fmt">Email: %s</string>
-
-
-    <string name="title_material_metaphor">Material is the metaphor</string>
-    <string name="title_material_bold">Bold, graphic, intentional</string>
-    <string name="title_material_motion">Motion provides meaning</string>
-    <string name="title_material_shadow">Light and shadow</string>
-
-    <string name="description_material_metaphor">A material metaphor is the unifying theory of a rationalized space and a system of motion. The material is grounded in tactile reality, inspired by the study of paper and ink, yet technologically advanced and open to imagination and magic.</string>
-    <string name="description_material_bold">The foundational elements of print-based design – typography, grids, space, scale, color, and use of imagery – guide visual treatments.</string>
-    <string name="description_material_motion">Motion respects and reinforces the user as the prime mover. Primary user actions are inflection points that initiate motion, transforming the whole design.</string>
-    <string name="description_material_shadow">Within the material environment, virtual lights illuminate the scene. Key lights create directional shadows, while ambient light creates soft shadows from all angles.</string>
 
     <string name="title_permissions">Requesting permissions was never easier.</string>
     <string name="description_permissions">This app needs the camera and storage permission.\nIt\'s only to show how permission requests work in this library and we won\'t do anything with the granted permissions.</string>

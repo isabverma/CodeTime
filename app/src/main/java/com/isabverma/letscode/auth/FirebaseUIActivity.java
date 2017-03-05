@@ -1,8 +1,10 @@
 package com.isabverma.letscode.auth;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +27,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase_ui);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -62,7 +65,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
         Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                 //.setIsSmartLockEnabled(!BuildConfig.DEBUG)
                 .setProviders(AuthUI.EMAIL_PROVIDER)
-                .setLogo(R.drawable.ic_launcher)
+                .setLogo(R.mipmap.ic_launcher)
                 .build();
 
         startActivityForResult(intent, RC_SIGN_IN);
@@ -77,7 +80,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
             findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
         } else {
             // Signed out
-            mStatusView.setText(R.string.signed_out);
+            mStatusView.setText("Signed Out");
 
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_button).setVisibility(View.GONE);

@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/status"
             style="@style/ThemeOverlay.MyTextDetail"
-            android:text="@string/signed_out" />
+            android:text="Signed Out" />
 
     </LinearLayout>
 
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/sign_out"
+            android:text="Sign Out"
             android:theme="@style/ThemeOverlay.MyDarkButton"
             android:visibility="gone" />
 
