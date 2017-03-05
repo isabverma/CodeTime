@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.isabverma.letscode.auth.FirebaseUIActivity;
 import com.isabverma.letscode.intro.MainIntroActivity;
+import com.isabverma.letscode.startLearn.ProductActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -145,6 +146,9 @@ public class MainActivity extends AppCompatActivity
             View layout = inflater.inflate(R.layout.content_main, null);
             mainLayout.removeAllViews();
             mainLayout.addView(layout);
+        } else if(id == R.id.start_learning){
+            Intent intent = new Intent(MainActivity.this,ProductActivity.class);
+            startActivity(intent);
         } else if(id == R.id.rate_us){
             Uri uri = Uri.parse("market://details?id=com.isabverma.letscode");
             Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
