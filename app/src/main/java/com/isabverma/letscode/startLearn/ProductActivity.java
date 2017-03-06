@@ -40,34 +40,7 @@ public class ProductActivity extends AppCompatActivity implements SearchView.OnQ
         search.setIconifiedByDefault(false);
         search.setOnQueryTextListener(this);
         search.setOnCloseListener(this);
-        //expandableListView = (ExpandableListView) findViewById(R.id.activity_product_expendable_listview);
-        //productExpandableListAdapter = new ProductExpandableListAdapter(ProductActivity.this, categoryList);
-        //expandableListView.setAdapter(productExpandableListAdapter);
-        //displayList();
-
-
-        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("availableProducts").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Toast.makeText(ProductActivity.this, "Snapshot contains : " + dataSnapshot.toString(), Toast.LENGTH_SHORT).show();
-                //categoryList = new ArrayList<Category>();
-                for(DataSnapshot categoryDataSnapshot : dataSnapshot.getChildren()){
-                    Category category = categoryDataSnapshot.getValue(Category.class);
-                    Toast.makeText(ProductActivity.this, "Category Name : " + category.getCategoryName(), Toast.LENGTH_SHORT).show();
-                    categoryList.add(category);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ProductActivity.this, "OOPS..!!! Connection to server cannot be established.", Toast.LENGTH_LONG).show();
-            }
-        });
-
-
-
+        displayList();
         expandAll();
     }
 
@@ -86,10 +59,10 @@ public class ProductActivity extends AppCompatActivity implements SearchView.OnQ
     }
 
     private void displayList(){
-        //loadSomeData();
-        //expandableListView = (ExpandableListView) findViewById(R.id.activity_product_expendable_listview);
-        //productExpandableListAdapter = new ProductExpandableListAdapter(ProductActivity.this, categoryList);
-        //expandableListView.setAdapter(productExpandableListAdapter);
+        loadSomeData();
+        expandableListView = (ExpandableListView) findViewById(R.id.activity_product_expendable_listview);
+        productExpandableListAdapter = new ProductExpandableListAdapter(ProductActivity.this, categoryList);
+        expandableListView.setAdapter(productExpandableListAdapter);
     }
 
     @Override
@@ -143,6 +116,26 @@ public class ProductActivity extends AppCompatActivity implements SearchView.OnQ
         categoryList.add(category);
     }
     private void loadSomeData(){
-
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        final ArrayList<Category> categoryArrayList = new ArrayList<Category>();
+        databaseReference.child("availableProducts").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                categoryArrayList.clear();
+                for (DataSnapshot child : children) {
+                    Category category = child.getValue(Category.class);
+                    categoryArrayList.add(category);
+                }
+                categoryList.clear();
+                categoryList.addAll(categoryArrayList);
+                productExpandableListAdapter.updateExpendableList(categoryList);
+                expandAll();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(ProductActivity.this, "OOPS..!!! Connection to server cannot be established.", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

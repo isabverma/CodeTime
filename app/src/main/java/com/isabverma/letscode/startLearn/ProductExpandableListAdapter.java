@@ -120,4 +120,14 @@ public class ProductExpandableListAdapter extends BaseExpandableListAdapter {
         }
         notifyDataSetChanged();
     }
+
+    public void updateExpendableList(ArrayList<Category> categoryList) {
+        //this.categoryList.clear();
+        //this.categoryList.addAll(categoryList);
+        //this.originalList.clear();
+        //this.originalList.addAll(categoryList);
+        this.originalList = categoryList;
+        notifyDataSetChanged();
+        filterData("");
+    }
 }
