@@ -1,5 +1,6 @@
 package com.isabverma.letscode.startLearn;
 
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -37,7 +38,7 @@ public class TopicActivity extends AppCompatActivity implements SearchView.OnQue
         productName = getIntent().getStringExtra("productName");
         this.setTitle("Learn " + productName);
 
-        writeData(); //Required for data load
+        //writeData(); //Required for data load
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         search = (SearchView) findViewById(R.id.activity_topic_search_view);
@@ -123,6 +124,9 @@ public class TopicActivity extends AppCompatActivity implements SearchView.OnQue
     private void loadSomeData(){
         databaseReference = FirebaseDatabase.getInstance().getReference();
         final ArrayList<Flavour> flavourArrayList = new ArrayList<Flavour>();
+        final ProgressDialog progressDialog = new ProgressDialog(TopicActivity.this);
+        progressDialog.setMessage("Please wait.. Loading data...");
+        progressDialog.show();
         databaseReference.child(productName).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -136,6 +140,8 @@ public class TopicActivity extends AppCompatActivity implements SearchView.OnQue
                 flavoutList.addAll(flavourArrayList);
                 topicExpandableListAdapter.updateExpendableList(flavoutList);
                 expandAll();
+                progressDialog.hide();
+                progressDialog.dismiss();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

@@ -1,5 +1,6 @@
 package com.isabverma.letscode.startLearn;
 
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -131,6 +132,9 @@ public class ProductActivity extends AppCompatActivity implements SearchView.OnQ
     private void loadSomeData(){
         databaseReference = FirebaseDatabase.getInstance().getReference();
         final ArrayList<Category> categoryArrayList = new ArrayList<Category>();
+        final ProgressDialog progressDialog = new ProgressDialog(ProductActivity.this);
+        progressDialog.setMessage("Please wait.. Loading data...");
+        progressDialog.show();
         databaseReference.child("availableProducts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -144,6 +148,8 @@ public class ProductActivity extends AppCompatActivity implements SearchView.OnQ
                 categoryList.addAll(categoryArrayList);
                 productExpandableListAdapter.updateExpendableList(categoryList);
                 expandAll();
+                progressDialog.hide();
+                progressDialog.dismiss();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
