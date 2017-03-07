@@ -2,10 +2,13 @@ package com.isabverma.letscode.startLearn;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,7 +22,7 @@ import com.isabverma.letscode.modal.Product;
 
 import java.util.ArrayList;
 
-public class ProductActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, SearchView.OnCloseListener{
+public class ProductActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, SearchView.OnCloseListener {
 
     private DatabaseReference databaseReference;
 
@@ -63,6 +66,16 @@ public class ProductActivity extends AppCompatActivity implements SearchView.OnQ
         expandableListView = (ExpandableListView) findViewById(R.id.activity_product_expendable_listview);
         productExpandableListAdapter = new ProductExpandableListAdapter(ProductActivity.this, categoryList);
         expandableListView.setAdapter(productExpandableListAdapter);
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                TextView productName = (TextView) v.findViewById(R.id.product_row_text_view);
+                Intent intent = new Intent(getBaseContext(), TopicActivity.class);
+                intent.putExtra("productName", productName.getText().toString().trim());
+                startActivity(intent);
+                return true;
+            }
+        });
     }
 
     @Override

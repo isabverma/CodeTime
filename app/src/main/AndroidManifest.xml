@@ -55,11 +55,17 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".startLearn.ProductActivity"
+        <activity
+            android:name=".startLearn.ProductActivity"
             android:label="Start Learning">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.isabverma.letscode.MainActivity" />
+        </activity>
+        <activity android:name=".startLearn.TopicActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.isabverma.letscode.startLearn.ProductActivity" />
         </activity>
     </application>
 

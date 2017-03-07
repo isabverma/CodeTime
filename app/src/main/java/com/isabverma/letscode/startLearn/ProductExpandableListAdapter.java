@@ -11,7 +11,6 @@ import com.isabverma.letscode.R;
 import com.isabverma.letscode.modal.Category;
 import com.isabverma.letscode.modal.Product;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -74,9 +73,9 @@ public class ProductExpandableListAdapter extends BaseExpandableListAdapter {
         Category category = (Category) getGroup(groupPosition);
         if (convertView == null){
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.parent_row, null);
+            convertView = layoutInflater.inflate(R.layout.category_row, null);
         }
-        TextView categoryName = (TextView) convertView.findViewById(R.id.parent_row_text_view);
+        TextView categoryName = (TextView) convertView.findViewById(R.id.category_row_text_view);
         categoryName.setText(category.getCategoryName().trim());
         return convertView;
     }
@@ -86,9 +85,9 @@ public class ProductExpandableListAdapter extends BaseExpandableListAdapter {
         Product product = (Product) getChild(groupPosition, childPosition);
         if (convertView == null){
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.child_row, null);
+            convertView = layoutInflater.inflate(R.layout.product_row, null);
         }
-        TextView productName = (TextView) convertView.findViewById(R.id.child_row_text_view);
+        TextView productName = (TextView) convertView.findViewById(R.id.product_row_text_view);
         productName.setText(product.getProduct_name().trim());
         return convertView;
     }
@@ -122,10 +121,6 @@ public class ProductExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     public void updateExpendableList(ArrayList<Category> categoryList) {
-        //this.categoryList.clear();
-        //this.categoryList.addAll(categoryList);
-        //this.originalList.clear();
-        //this.originalList.addAll(categoryList);
         this.originalList = categoryList;
         notifyDataSetChanged();
         filterData("");

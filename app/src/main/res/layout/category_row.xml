@@ -5,7 +5,7 @@
     android:layout_height="55dip">
 
     <TextView
-        android:id="@+id/parent_row_text_view"
+        android:id="@+id/category_row_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="35sp"
