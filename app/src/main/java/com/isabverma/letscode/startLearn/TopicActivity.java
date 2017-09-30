@@ -126,6 +126,7 @@ public class TopicActivity extends AppCompatActivity implements SearchView.OnQue
         final ArrayList<Flavour> flavourArrayList = new ArrayList<Flavour>();
         final ProgressDialog progressDialog = new ProgressDialog(TopicActivity.this);
         progressDialog.setMessage("Please wait.. Loading data...");
+        progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
         databaseReference.child(productName).addValueEventListener(new ValueEventListener() {
             @Override

@@ -1,3 +1,4 @@
+
 package com.isabverma.letscode;
 
 
@@ -46,3 +47,4 @@ public class SplashActivity extends Activity {
         timerThread.start();
     }
 }
+

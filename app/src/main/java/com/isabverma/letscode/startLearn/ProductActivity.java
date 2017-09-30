@@ -135,6 +135,7 @@ public class ProductActivity extends AppCompatActivity implements SearchView.OnQ
         final ProgressDialog progressDialog = new ProgressDialog(ProductActivity.this);
         progressDialog.setMessage("Please wait.. Loading data...");
         progressDialog.show();
+        progressDialog.setCanceledOnTouchOutside(false);
         databaseReference.child("availableProducts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
